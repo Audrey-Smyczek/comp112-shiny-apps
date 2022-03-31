@@ -1,0 +1,13 @@
+name: comp112-shiny-apps
+title:
+username:
+account: audrey-smyczek
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 5986636
+bundleId: 5751710
+url: https://audrey-smyczek.shinyapps.io/comp112-shiny-apps/
+when: 1648764653.89585
+lastSyncTime: 1648764653.89587
+asMultiple: FALSE
+asStatic: FALSE
