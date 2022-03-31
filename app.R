@@ -9,10 +9,10 @@ census_pop_est_2018 <- read_csv("https://www.dropbox.com/s/6txwv3b4ng7pepe/us_ce
   select(-dot) %>% 
   mutate(state = str_to_lower(state))
 
-ui <- fluidPage(sliderInput(inputId = "date", #input id is how this element will be called in the server later
-                            label = "Choose the range of dates:", #how it looks to the user; gives instructions
-                            min = as.Date("2020-01-21","%Y-%m-%d"), #min date
-                            max = as.Date("2022-03-30","%Y-%m-%d"), #max date
+ui <- fluidPage(sliderInput(inputId = "date",
+                            label = "Choose the range of dates:", 
+                            min = as.Date("2020-01-21","%Y-%m-%d"),
+                            max = as.Date("2022-03-30","%Y-%m-%d"),
                             value = c(as.Date("2020-01-21"), as.Date("2022-03-30")),
                             timeFormat = "%Y-%m-%d",
                             step = 1),
@@ -38,7 +38,7 @@ ui <- fluidPage(sliderInput(inputId = "date", #input id is how this element will
                                         Tennessee = "tennessee", Texas = "texas", Utah = "utah",
                                         Vermont = "vermont", Virginia = "virginia", Washington = "washington",
                                         'West Virginia' = "west virginia", Wisconsin = "wisconsin",
-                                        Wyoming = "wyoming")), #drop-down options, shows the word 'Female' but then chooses 'F' in dataset
+                                        Wyoming = "wyoming")), 
                 selectInput(inputId = "stateTwo",
                             label = "Choose the second state:",
                             choices = c(Alabama = "alabama", Alaska = "alaska", Arizona = "arizona",
@@ -77,7 +77,10 @@ server <- function(input, output) {
       ggplot(aes(x = date,
                  y = cases_per_10000)) +
       scale_x_continuous(limits = input$date) + 
-      geom_line(aes(color = state))
+      geom_line(aes(color = state))+
+      labs(title = "COVID-19 Cases per 10,000 people over Time",
+           x = "Time",
+           y = "Cases")
   )
 }
 
